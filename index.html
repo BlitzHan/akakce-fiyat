@@ -46,7 +46,6 @@
   .sw{width:13px;height:13px;border-radius:50%;border:1px solid rgba(0,0,0,.15);flex:none}
   .col .cl{font-size:12.5px;font-weight:600}.col .cp{font-size:11px;color:var(--muted);font-weight:600}
   .col.on .cp{color:var(--accent-d)}.col.cheapest .cp{color:var(--green)}
-  .vbody,.cbody{}
   .vpanel{display:none;border-top:1px solid var(--line);background:#fcfcfd;padding-bottom:6px}
   .vpanel.open{display:block;animation:fade .2s ease}
   @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
@@ -78,12 +77,13 @@
     </div>
     <div class="chips" id="chips"></div>
     <div id="list"></div>
-    <p class="note">Fiyatlar Akakçe "Piyasa fiyatları" bölümünden alınmıştır. iPhone'larda renk bazında ayrı fiyatlar mevcut. Otomatik güncellenmez; "Akakçe fiyatlarını çek" dediğinizde yenilenir.</p>
+    <p class="note">Fiyatlar Akakçe "Piyasa fiyatları" bölümünden alınmıştır; model → hafıza/seçenek → renk → firma. Otomatik güncellenmez; "Akakçe fiyatlarını çek" dediğinizde yenilenir.</p>
   </div>
 <script>
 const UPDATED="6 Haziran 2026";
 const B="https://www.akakce.com";
-const SW={"Siyah":"#1c1c1e","Beyaz":"#f2f2f0","Ada Çayı":"#b9c4b1","Lavanta":"#c9c0e6","Sis Mavisi":"#aebfcf","Abis":"#2b3a4a","Gümüş":"#e3e4e6","Kozmik Turuncu":"#c8612e","Gök Mavisi":"#a9c7e8","Pamuk Beyazı":"#f1ece4","Uçuk Altın":"#e8d9b5","Uzay Siyahı":"#26272b"};
+const IMGB="https://cdn.akakce.com";
+const SW={"Siyah":"#1c1c1e","Beyaz":"#f2f2f0","Ada Çayı":"#b9c4b1","Lavanta":"#c9c0e6","Sis Mavisi":"#aebfcf","Abis":"#2b3a4a","Gümüş":"#e3e4e6","Kozmik Turuncu":"#c8612e","Gök Mavisi":"#a9c7e8","Pamuk Beyazı":"#f1ece4","Uçuk Altın":"#e8d9b5","Uzay Siyahı":"#26272b","Mavi":"#3a6ea5","Mor":"#7e6bb0","Uzay Grisi":"#8a8d8f","Yıldız Işığı":"#efe9dd","Pembe":"#e8b9c4","Sarı":"#e9d27a","Gece Yarısı":"#2b2f3a","Turuncu":"#d2622f","Roze Altın":"#e6c3b0","Simsiyah":"#1c1c1e","Siyah Titanyum":"#3a3a3c","Natürel Titanyum":"#c8c2b6"};
 const MODELS=[
 {cat:"iPhone",model:"iPhone 17",img:"/z/apple/iphone-17-256-gb-siyah.jpg",variants:[
  {v:"256 GB",colors:[
@@ -161,21 +161,76 @@ const MODELS=[
  ]}
 ]},
 {cat:"iPad",model:"iPad Air M4 11\"",img:"/z/apple/ipad-air-m4-wi-fi-128-gb-11.jpg",variants:[
- {v:"128 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-11-fiyati,1433649711.html",f:[["gurgencler.com.tr","33.999 TL"],["troy e-store","34.999 TL"],["Beymen","35.565 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Turkcell","36.999 TL"],["Apple Store","37.999 TL"]]}]},
- {v:"256 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-11-fiyati,1433649719.html",f:[["gurgencler.com.tr","39.399 TL"],["MediaMarkt","39.979 TL"],["Teknosa","39.999 TL"],["troy e-store","39.999 TL"],["Turkcell","41.999 TL"],["Beymen","43.297 TL"],["Apple Store","43.999 TL"]]}]},
- {v:"512 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-11-fiyati,1433649728.html",f:[["MediaMarkt","50.999 TL"],["gurgencler.com.tr","53.749 TL"],["Apple Store","55.999 TL"],["Beymen","55.999 TL"],["Teknosa","55.999 TL"],["troy e-store","55.999 TL"]]}]},
- {v:"1 TB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-11-fiyati,1433649733.html",f:[["MediaMarkt","62.999 TL"],["Apple Store","67.999 TL"],["troy e-store","67.999 TL"]]}]}
+ {v:"128 GB",colors:[
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-11-mh304tu-a-uzay-grisi-fiyati,1435531759.html",f:[["gurgencler.com.tr","33.999 TL"],["troy e-store","34.999 TL"],["Beymen","35.565 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Apple Store","37.999 TL"],["Turkcell","39.999 TL"]]},
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-11-mh314tu-a-mavi-fiyati,1435539859.html",f:[["gurgencler.com.tr","33.999 TL"],["troy e-store","34.999 TL"],["Beymen","35.565 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Turkcell","36.999 TL"],["Apple Store","37.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-11-mh334tu-a-yildiz-isigi-fiyati,1435540271.html",f:[["gurgencler.com.tr","33.999 TL"],["troy e-store","34.999 TL"],["Beymen","35.565 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Turkcell","36.999 TL"],["Apple Store","37.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-11-mh344tu-a-mor-fiyati,1435540045.html",f:[["gurgencler.com.tr","33.999 TL"],["troy e-store","34.999 TL"],["Beymen","35.565 TL"],["MediaMarkt","36.999 TL"],["Apple Store","37.999 TL"],["Turkcell","42.999 TL"]]}
+ ]},
+ {v:"256 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-11-mh364tu-a-mavi-fiyati,1435541452.html",f:[["gurgencler.com.tr","39.399 TL"],["MediaMarkt","39.979 TL"],["Teknosa","39.999 TL"],["troy e-store","39.999 TL"],["Turkcell","41.999 TL"],["Beymen","43.297 TL"],["Apple Store","43.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-11-mh394tu-a-mor-fiyati,1435541500.html",f:[["gurgencler.com.tr","39.399 TL"],["MediaMarkt","39.979 TL"],["Teknosa","39.999 TL"],["troy e-store","39.999 TL"],["Turkcell","41.999 TL"],["Beymen","43.297 TL"],["Apple Store","43.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-11-mh354tu-a-uzay-grisi-fiyati,1435541019.html",f:[["gurgencler.com.tr","39.399 TL"],["MediaMarkt","39.979 TL"],["Teknosa","39.999 TL"],["troy e-store","39.999 TL"],["Turkcell","41.999 TL"],["Beymen","43.297 TL"],["Apple Store","43.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-11-mh374tu-a-yildiz-isigi-fiyati,1435546992.html",f:[["gurgencler.com.tr","39.399 TL"],["MediaMarkt","39.979 TL"],["Teknosa","39.999 TL"],["troy e-store","39.999 TL"],["Beymen","43.297 TL"],["Apple Store","43.999 TL"],["Turkcell","49.999 TL"]]}
+ ]},
+ {v:"512 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-11-mh3c4tu-a-mavi-fiyati,1435547214.html",f:[["MediaMarkt","50.999 TL"],["Apple Store","55.999 TL"],["Teknosa","55.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-11-mh3e4tu-a-mor-fiyati,1435547354.html",f:[["MediaMarkt","50.999 TL"],["Apple Store","55.999 TL"],["troy e-store","55.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-11-mh3a4tu-a-uzay-grisi-fiyati,1435547047.html",f:[["MediaMarkt","50.999 TL"],["gurgencler.com.tr","53.749 TL"],["Apple Store","55.999 TL"],["Beymen","55.999 TL"],["Teknosa","55.999 TL"],["troy e-store","55.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-11-mh3d4tu-a-yildiz-isigi-fiyati,1435547363.html",f:[["MediaMarkt","50.999 TL"],["Apple Store","55.999 TL"],["Teknosa","55.999 TL"],["troy e-store","55.999 TL"]]}
+ ]},
+ {v:"1 TB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-11-mh3h4tu-a-mavi-fiyati,1435547459.html",f:[["MediaMarkt","62.999 TL"],["Apple Store","67.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-11-mh3k4tu-a-mor-fiyati,1435547478.html",f:[["MediaMarkt","62.999 TL"],["Apple Store","67.999 TL"],["troy e-store","67.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-11-mh3g4tu-a-uzay-grisi-fiyati,1435547418.html",f:[["MediaMarkt","62.999 TL"],["Apple Store","67.999 TL"],["troy e-store","67.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-11-mh3j4tu-a-yildiz-isigi-fiyati,1435547501.html",f:[["MediaMarkt","62.999 TL"],["Apple Store","67.999 TL"]]}
+ ]}
 ]},
 {cat:"iPad",model:"iPad Air M4 13\"",img:"/z/apple/ipad-air-m4-wi-fi-128-gb-13.jpg",variants:[
- {v:"128 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-13-fiyati,1433649722.html",f:[["MediaMarkt","43.599 TL"],["gurgencler.com.tr","43.999 TL"],["Teknosa","44.599 TL"],["troy e-store","44.599 TL"],["Beymen","45.359 TL"],["Turkcell","45.999 TL"],["Apple Store","47.999 TL"]]}]},
- {v:"256 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-13-fiyati,1433649737.html",f:[["MediaMarkt","49.999 TL"],["gurgencler.com.tr","50.999 TL"],["Teknosa","52.999 TL"],["troy e-store","52.999 TL"],["Turkcell","52.999 TL"],["Apple Store","53.999 TL"],["Beymen","53.999 TL"]]}]},
- {v:"512 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-13-fiyati,1433649928.html",f:[["MediaMarkt","59.999 TL"],["gurgencler.com.tr","62.999 TL"],["Apple Store","65.999 TL"],["Beymen","65.999 TL"],["troy e-store","65.999 TL"]]}]},
- {v:"1 TB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-13-fiyati,1433650041.html",f:[["MediaMarkt","72.499 TL"],["gurgencler.com.tr","73.999 TL"],["Apple Store","77.999 TL"],["troy e-store","77.999 TL"]]}]}
+ {v:"128 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-13-mh5p4tu-a-mavi-fiyati,1435540254.html",f:[["MediaMarkt","43.599 TL"],["gurgencler.com.tr","43.999 TL"],["Teknosa","44.599 TL"],["troy e-store","44.599 TL"],["Beymen","45.359 TL"],["Turkcell","45.999 TL"],["Apple Store","47.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-13-mh5n4tu-a-uzay-grisi-fiyati,1435531707.html",f:[["MediaMarkt","43.599 TL"],["gurgencler.com.tr","43.999 TL"],["Teknosa","44.599 TL"],["troy e-store","44.599 TL"],["Beymen","45.359 TL"],["Turkcell","45.999 TL"],["Apple Store","47.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-13-mh5t4tu-a-mor-fiyati,1435541014.html",f:[["MediaMarkt","43.599 TL"],["gurgencler.com.tr","43.999 TL"],["troy e-store","44.599 TL"],["Apple Store","47.999 TL"],["Turkcell","50.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-128-gb-13-mh5q4tu-a-yildiz-isigi-fiyati,1435541083.html",f:[["MediaMarkt","43.599 TL"],["gurgencler.com.tr","43.999 TL"],["Teknosa","44.599 TL"],["troy e-store","44.599 TL"],["Beymen","45.359 TL"],["Apple Store","47.999 TL"],["Turkcell","50.999 TL"]]}
+ ]},
+ {v:"256 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-13-mh5v4tu-a-mavi-fiyati,1435547044.html",f:[["MediaMarkt","49.999 TL"],["gurgencler.com.tr","50.999 TL"],["troy e-store","52.999 TL"],["Turkcell","52.999 TL"],["Apple Store","53.999 TL"],["Beymen","53.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-13-mh5u4tu-a-uzay-grisi-fiyati,1435546976.html",f:[["MediaMarkt","49.999 TL"],["gurgencler.com.tr","50.999 TL"],["Teknosa","52.999 TL"],["troy e-store","52.999 TL"],["Turkcell","52.999 TL"],["Apple Store","53.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-13-mh5w4tu-a-yildiz-isigi-fiyati,1435547364.html",f:[["MediaMarkt","49.999 TL"],["gurgencler.com.tr","50.999 TL"],["troy e-store","52.999 TL"],["Turkcell","52.999 TL"],["Apple Store","53.999 TL"],["Beymen","53.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-256-gb-13-mh5x4tu-a-mor-fiyati,1435547333.html",f:[["MediaMarkt","49.999 TL"],["gurgencler.com.tr","50.999 TL"],["troy e-store","52.999 TL"],["Apple Store","53.999 TL"],["Beymen","53.999 TL"],["Turkcell","54.999 TL"]]}
+ ]},
+ {v:"512 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-13-mh604tu-a-mavi-fiyati,1435548080.html",f:[["MediaMarkt","59.999 TL"],["gurgencler.com.tr","62.999 TL"],["Apple Store","65.999 TL"],["troy e-store","65.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-13-mh624tu-a-mor-fiyati,1435548112.html",f:[["MediaMarkt","59.999 TL"],["gurgencler.com.tr","62.999 TL"],["Apple Store","65.999 TL"],["troy e-store","65.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-13-mh5y4tu-a-uzay-grisi-fiyati,1435547472.html",f:[["MediaMarkt","59.999 TL"],["gurgencler.com.tr","62.999 TL"],["Apple Store","65.999 TL"],["Beymen","65.999 TL"],["troy e-store","65.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-512-gb-13-mh614tu-a-yildiz-isigi-fiyati,1435548145.html",f:[["MediaMarkt","59.999 TL"],["gurgencler.com.tr","62.999 TL"],["Apple Store","65.999 TL"],["troy e-store","65.999 TL"]]}
+ ]},
+ {v:"1 TB",colors:[
+  {c:"Yıldız Işığı",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-13-mh654tu-a-yildiz-isigi-fiyati,1435558175.html",f:[["MediaMarkt","72.499 TL"],["Apple Store","77.999 TL"],["troy e-store","77.999 TL"]]},
+  {c:"Uzay Grisi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-13-mh634tu-a-uzay-grisi-fiyati,1435548278.html",f:[["gurgencler.com.tr","73.999 TL"],["MediaMarkt","74.099 TL"],["Apple Store","77.999 TL"],["troy e-store","77.999 TL"]]},
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-13-mh644tu-a-mavi-fiyati,1435548307.html",f:[["MediaMarkt","74.099 TL"],["Apple Store","77.999 TL"],["troy e-store","77.999 TL"]]},
+  {c:"Mor",u:"/tablet/en-ucuz-ipad-air-m4-wi-fi-1-tb-13-mhdk4tu-a-mor-fiyati,1435558164.html",f:[["MediaMarkt","74.099 TL"],["Apple Store","77.999 TL"],["troy e-store","77.999 TL"]]}
+ ]}
 ]},
 {cat:"iPad",model:"iPad 11. Nesil (A16)",img:"/z/apple/ipad-11-nesil-wi-fi-128-gb-11.jpg",variants:[
- {v:"128 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-128-gb-11-fiyati,967238249.html",f:[["Turkcell","18.880 TL"],["A101","19.499 TL"],["Teknosa","19.499 TL"],["Beymen","20.617 TL"],["gurgencler.com.tr","20.749 TL"],["Koçtaş","20.949 TL"],["D&R","20.999 TL"],["MediaMarkt","20.999 TL"],["troy e-store","20.999 TL"],["Vatan Bilgisayar","20.999 TL"],["Arçelik","21.999 TL"],["Avansas","21.999 TL"],["Beko","21.999 TL"],["Apple Store","22.999 TL"],["Migros Sanal Market Ekstra","22.999 TL"]]}]},
- {v:"256 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-256-gb-11-fiyati,967237226.html",f:[["Beymen","25.256 TL"],["Teknosa","25.499 TL"],["Turkcell","25.954 TL"],["gurgencler.com.tr","25.999 TL"],["MediaMarkt","26.999 TL"],["Vatan Bilgisayar","26.999 TL"],["Arçelik","27.999 TL"],["Beko","27.999 TL"],["Apple Store","28.999 TL"],["troy e-store","28.999 TL"]]}]},
- {v:"512 GB",colors:[{c:"",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-512-gb-11-fiyati,967238295.html",f:[["MediaMarkt","32.499 TL"],["Teknosa","37.999 TL"],["gurgencler.com.tr","38.949 TL"],["Apple Store","40.999 TL"],["troy e-store","40.999 TL"],["Turkcell","40.999 TL"]]}]}
+ {v:"128 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-128-gb-11-md4a4tu-a-mavi-fiyati,967238485.html",f:[["Turkcell","18.880 TL"],["Teknosa","19.497 TL"],["A101","19.499 TL"],["Beymen","20.617 TL"],["gurgencler.com.tr","20.749 TL"],["D&R","20.999 TL"],["MediaMarkt","20.999 TL"],["troy e-store","20.999 TL"],["Vatan Bilgisayar","20.999 TL"],["Arçelik","21.999 TL"],["Beko","21.999 TL"],["Apple Store","22.999 TL"],["Migros Sanal Market Ekstra","22.999 TL"]]},
+  {c:"Pembe",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-128-gb-11-md4e4tu-a-pembe-fiyati,967240563.html",f:[["Turkcell","18.978 TL"],["A101","19.499 TL"],["Teknosa","20.350 TL"],["Beymen","20.617 TL"],["gurgencler.com.tr","20.749 TL"],["MediaMarkt","20.999 TL"],["troy e-store","20.999 TL"],["Vatan Bilgisayar","20.999 TL"],["Arçelik","21.999 TL"],["Beko","21.999 TL"],["Apple Store","22.999 TL"],["Migros Sanal Market Ekstra","22.999 TL"]]},
+  {c:"Sarı",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-128-gb-11-md4d4tu-a-sari-fiyati,967240646.html",f:[["Turkcell","19.398 TL"],["A101","19.499 TL"],["Teknosa","20.168 TL"],["Beymen","20.617 TL"],["gurgencler.com.tr","20.749 TL"],["MediaMarkt","20.999 TL"],["troy e-store","20.999 TL"],["Vatan Bilgisayar","20.999 TL"],["Arçelik","21.999 TL"],["Beko","21.999 TL"],["Apple Store","22.999 TL"],["Migros Sanal Market Ekstra","22.999 TL"]]},
+  {c:"Gümüş",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-128-gb-11-md3y4tu-a-gumus-fiyati,967241078.html",f:[["Teknosa","19.497 TL"],["Turkcell","19.498 TL"],["A101","19.499 TL"],["Beymen","20.617 TL"],["gurgencler.com.tr","20.749 TL"],["Koçtaş","20.949 TL"],["D&R","20.999 TL"],["MediaMarkt","20.999 TL"],["troy e-store","20.999 TL"],["Vatan Bilgisayar","20.999 TL"],["Arçelik","21.999 TL"],["Avansas","21.999 TL"],["Beko","21.999 TL"],["Apple Store","22.999 TL"],["Migros Sanal Market Ekstra","22.999 TL"]]}
+ ]},
+ {v:"256 GB",colors:[
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-256-gb-11-md4h4tu-a-mavi-fiyati,967238479.html",f:[["Teknosa","25.499 TL"],["gurgencler.com.tr","25.999 TL"],["Turkcell","26.464 TL"],["MediaMarkt","26.999 TL"],["Vatan Bilgisayar","26.999 TL"],["Arçelik","27.999 TL"],["Beko","27.999 TL"],["Apple Store","28.999 TL"],["troy e-store","28.999 TL"]]},
+  {c:"Gümüş",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-256-gb-11-md4g4tu-a-gumus-fiyati,967238528.html",f:[["Beymen","25.256 TL"],["Turkcell","25.954 TL"],["gurgencler.com.tr","25.999 TL"],["MediaMarkt","26.999 TL"],["Teknosa","26.999 TL"],["Vatan Bilgisayar","26.999 TL"],["Arçelik","27.999 TL"],["Beko","27.999 TL"],["Apple Store","28.999 TL"],["troy e-store","28.999 TL"]]},
+  {c:"Sarı",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-256-gb-11-md4j4tu-a-sari-fiyati,967238504.html",f:[["Beymen","25.256 TL"],["MediaMarkt","26.999 TL"],["Teknosa","26.999 TL"],["Apple Store","28.999 TL"],["troy e-store","28.999 TL"],["Turkcell","28.999 TL"]]},
+  {c:"Pembe",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-256-gb-11-md4p4tu-a-pembe-fiyati,967238495.html",f:[["gurgencler.com.tr","25.999 TL"],["Turkcell","25.999 TL"],["Apple Store","28.999 TL"],["Teknosa","28.999 TL"],["troy e-store","28.999 TL"],["Vatan Bilgisayar","28.999 TL"]]}
+ ]},
+ {v:"512 GB",colors:[
+  {c:"Gümüş",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-512-gb-11-md4q4tu-a-gumus-fiyati,967246326.html",f:[["MediaMarkt","32.499 TL"],["gurgencler.com.tr","38.949 TL"],["Apple Store","40.999 TL"],["troy e-store","40.999 TL"],["Turkcell","40.999 TL"]]},
+  {c:"Mavi",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-512-gb-11-md4y4tu-a-mavi-fiyati,967238502.html",f:[["MediaMarkt","32.499 TL"],["Teknosa","37.999 TL"],["gurgencler.com.tr","38.949 TL"],["Apple Store","40.999 TL"],["troy e-store","40.999 TL"]]},
+  {c:"Pembe",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-512-gb-11-md5c4tu-a-pembe-fiyati,967240635.html",f:[["MediaMarkt","37.999 TL"],["Teknosa","37.999 TL"],["Apple Store","40.999 TL"],["troy e-store","40.999 TL"],["Turkcell","40.999 TL"]]},
+  {c:"Sarı",u:"/tablet/en-ucuz-ipad-11-nesil-wi-fi-512-gb-11-md5a4tu-a-sari-fiyati,967241077.html",f:[["MediaMarkt","37.999 TL"],["Teknosa","37.999 TL"],["Apple Store","40.999 TL"],["troy e-store","40.999 TL"],["Turkcell","40.999 TL"]]}
+ ]}
 ]},
 {cat:"AirPods",model:"AirPods Pro 3",img:"/z/apple/airpods-pro-3-nesil.jpg",variants:[
  {v:"Standart",colors:[{c:"",u:"/bluetooth-kulaklik/en-ucuz-airpods-pro-3-nesil-fiyati,886427596.html",f:[["Turkcell","11.949 TL"],["gurgencler.com.tr","12.449 TL"],["Teknosa","12.499 TL"],["Vatan Bilgisayar","12.499 TL"],["Migros Sanal Market Ekstra","12.999 TL"],["troy e-store","12.999 TL"],["A101","13.299 TL"],["Beymen","13.401 TL"],["MediaMarkt","13.499 TL"],["Avansas","13.999 TL"],["Apple Store","15.499 TL"]]}]}
@@ -185,24 +240,70 @@ const MODELS=[
  {v:"ANC",colors:[{c:"",u:"/bluetooth-kulaklik/en-ucuz-airpods-4-nesil-anc-fiyati,760848082.html",f:[["Teknosa","9.350 TL"],["Turkcell","9.438 TL"],["gurgencler.com.tr","9.799 TL"],["Vatan Bilgisayar","9.799 TL"],["Arçelik","9.999 TL"],["Beko","9.999 TL"],["MediaMarkt","10.999 TL"],["troy e-store","10.999 TL"],["Beymen","11.339 TL"],["Apple Store","11.999 TL"]]}]}
 ]},
 {cat:"AirPods",model:"AirPods Max",img:"/z/apple/airpods-max-2.jpg",variants:[
- {v:"Max 2",colors:[{c:"",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-fiyati,760647543.html",f:[["D&R","36.799 TL"],["Apple Store","36.999 TL"],["gurgencler.com.tr","36.999 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["troy e-store","36.999 TL"],["Turkcell","36.999 TL"],["Vatan Bilgisayar","36.999 TL"]]}]},
- {v:"Eski (USB-C)",colors:[{c:"",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-fiyati,760848481.html",f:[["Teknosa","29.999 TL"],["troy e-store","29.999 TL"],["Turkcell","34.899 TL"]]}]}
+ {v:"Max 2",colors:[
+  {c:"Mor",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-mor-fiyati,1450429128.html",f:[["D&R","36.799 TL"],["Apple Store","36.999 TL"],["gurgencler.com.tr","36.999 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Turkcell","36.999 TL"]]},
+  {c:"Gece Yarısı",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-gece-yarisi-fiyati,1450429179.html",f:[["D&R","36.799 TL"],["Apple Store","36.999 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["troy e-store","36.999 TL"],["Turkcell","36.999 TL"],["Vatan Bilgisayar","36.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-yildiz-isigi-fiyati,1450451250.html",f:[["D&R","36.799 TL"],["Apple Store","36.999 TL"],["gurgencler.com.tr","36.999 TL"],["MediaMarkt","36.999 TL"],["troy e-store","36.999 TL"],["Turkcell","36.999 TL"],["Vatan Bilgisayar","36.999 TL"]]},
+  {c:"Mavi",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-mavi-fiyati,1450428993.html",f:[["D&R","36.799 TL"],["Apple Store","36.999 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["troy e-store","36.999 TL"],["Vatan Bilgisayar","36.999 TL"],["Turkcell","44.999 TL"]]},
+  {c:"Turuncu",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-2-turuncu-fiyati,1450451257.html",f:[["Apple Store","36.999 TL"],["MediaMarkt","36.999 TL"],["Teknosa","36.999 TL"],["Turkcell","44.999 TL"]]}
+ ]},
+ {v:"Eski (USB-C)",colors:[
+  {c:"Gece Yarısı",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-gece-yarisi-fiyati,760848910.html",f:[["Teknosa","29.999 TL"],["troy e-store","29.999 TL"],["Turkcell","34.899 TL"]]},
+  {c:"Mavi",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-mavi-fiyati,760848892.html",f:[["Teknosa","29.999 TL"],["troy e-store","29.999 TL"],["Turkcell","34.999 TL"]]},
+  {c:"Mor",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-mor-fiyati,760848893.html",f:[["Teknosa","29.999 TL"],["troy e-store","29.999 TL"],["Turkcell","34.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-yildiz-isigi-fiyati,760848911.html",f:[["Teknosa","29.999 TL"],["Turkcell","35.499 TL"]]},
+  {c:"Turuncu",u:"/bluetooth-kulaklik/en-ucuz-airpods-max-type-c-turuncu-fiyati,760848895.html",f:[["Teknosa","29.999 TL"],["Turkcell","36.899 TL"]]}
+ ]}
 ]},
 {cat:"Apple Watch",model:"Apple Watch Series 11",img:"/z/apple/apple-watch-series-11.jpg",variants:[
- {v:"42mm GPS",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-series-11-fiyati,898135420.html",f:[["Turkcell","20.599 TL"],["Beymen","21.957 TL"],["gurgencler.com.tr","21.999 TL"],["MediaMarkt","21.999 TL"],["Teknosa","21.999 TL"],["troy e-store","21.999 TL"],["Vatan Bilgisayar","21.999 TL"],["Apple Store","23.999 TL"]]}]},
- {v:"42mm Cellular",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-42-mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182763731.html",f:[["Turkcell","36.399 TL"],["MediaMarkt","37.999 TL"],["troy e-store","37.999 TL"],["Apple Store","41.999 TL"],["gurgencler.com.tr","41.999 TL"]]}]},
- {v:"46mm GPS",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-46-mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182767733.html",f:[["Turkcell","23.399 TL"],["Beymen","23.452 TL"],["gurgencler.com.tr","23.499 TL"],["MediaMarkt","23.499 TL"],["Teknosa","23.499 TL"],["troy e-store","23.499 TL"],["Vatan Bilgisayar","23.499 TL"],["Apple Store","25.499 TL"]]}]},
- {v:"46mm Cellular",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-46mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182771169.html",f:[["Turkcell","37.299 TL"],["MediaMarkt","39.499 TL"],["troy e-store","39.499 TL"],["Apple Store","43.499 TL"],["gurgencler.com.tr","43.499 TL"]]}]}
+ {v:"42mm GPS",colors:[
+  {c:"Uzay Grisi",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-42-mm-uzay-grisi-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182762639.html",f:[["Turkcell","20.599 TL"],["Beymen","21.957 TL"],["gurgencler.com.tr","21.999 TL"],["MediaMarkt","21.999 TL"],["Teknosa","21.999 TL"],["troy e-store","21.999 TL"],["Vatan Bilgisayar","21.999 TL"],["Apple Store","23.999 TL"]]},
+  {c:"Gümüş",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-42-mm-gumus-rengi-aluminyum-kasa-ve-sis-moru-spor-kordon-fiyati,1182756131.html",f:[["Turkcell","20.859 TL"],["Beymen","21.957 TL"],["gurgencler.com.tr","21.999 TL"],["MediaMarkt","21.999 TL"],["Teknosa","21.999 TL"],["troy e-store","21.999 TL"],["Apple Store","23.999 TL"]]},
+  {c:"Simsiyah",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-42-mm-simsiyah-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182762627.html",f:[["Beymen","21.957 TL"],["gurgencler.com.tr","21.999 TL"],["MediaMarkt","21.999 TL"],["Teknosa","21.999 TL"],["troy e-store","21.999 TL"],["Turkcell","22.600 TL"],["Apple Store","23.999 TL"]]},
+  {c:"Roze Altın",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-42-mm-roze-altin-rengi-aluminyum-kasa-ve-bulut-pembesi-spor-kordon-fiyati,1182756265.html",f:[["gurgencler.com.tr","21.999 TL"],["MediaMarkt","21.999 TL"],["Teknosa","21.999 TL"],["troy e-store","21.999 TL"],["Turkcell","22.998 TL"],["Apple Store","23.999 TL"]]}
+ ]},
+ {v:"42mm Cellular",colors:[
+  {c:"Uzay Grisi",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-42-mm-uzay-grisi-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182767680.html",f:[["Turkcell","36.399 TL"],["MediaMarkt","37.999 TL"],["Apple Store","41.999 TL"],["gurgencler.com.tr","41.999 TL"]]},
+  {c:"Gümüş",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-42-mm-gumus-rengi-aluminyum-kasa-ve-sis-moru-spor-kordon-fiyati,1182767687.html",f:[["Turkcell","36.999 TL"],["MediaMarkt","37.999 TL"],["Apple Store","41.999 TL"],["gurgencler.com.tr","41.999 TL"]]},
+  {c:"Simsiyah",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-42-mm-simsiyah-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182767723.html",f:[["MediaMarkt","37.999 TL"],["troy e-store","37.999 TL"],["Apple Store","41.999 TL"],["gurgencler.com.tr","41.999 TL"]]},
+  {c:"Roze Altın",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-42-mm-roze-altin-rengi-aluminyum-kasa-ve-bulut-pembesi-spor-kordon-fiyati,1182767690.html",f:[["MediaMarkt","37.999 TL"],["Apple Store","41.999 TL"],["gurgencler.com.tr","41.999 TL"]]}
+ ]},
+ {v:"46mm GPS",colors:[
+  {c:"Gümüş",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-46mm-gumus-rengi-aluminyum-kasa-ve-sis-moru-spor-kordon-fiyati,1182767737.html",f:[["Turkcell","23.399 TL"],["Beymen","23.452 TL"],["gurgencler.com.tr","23.499 TL"],["MediaMarkt","23.499 TL"],["troy e-store","23.499 TL"],["Vatan Bilgisayar","23.499 TL"],["Apple Store","25.499 TL"]]},
+  {c:"Roze Altın",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-46-mm-roze-altin-rengi-aluminyum-kasa-ve-bulut-pembesi-spor-kordon-fiyati,1182767736.html",f:[["Turkcell","23.399 TL"],["gurgencler.com.tr","23.499 TL"],["MediaMarkt","23.499 TL"],["Teknosa","23.499 TL"],["troy e-store","23.499 TL"],["Apple Store","25.499 TL"]]},
+  {c:"Simsiyah",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-46-mm-simsiyah-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182767735.html",f:[["Beymen","23.452 TL"],["gurgencler.com.tr","23.499 TL"],["MediaMarkt","23.499 TL"],["Teknosa","23.499 TL"],["troy e-store","23.499 TL"],["Vatan Bilgisayar","23.499 TL"],["Apple Store","25.499 TL"],["Turkcell","25.999 TL"]]},
+  {c:"Uzay Grisi",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-46mm-uzay-grisi-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182771103.html",f:[["Beymen","23.452 TL"],["gurgencler.com.tr","23.499 TL"],["MediaMarkt","23.499 TL"],["Teknosa","23.499 TL"],["troy e-store","23.499 TL"],["Apple Store","25.499 TL"],["Turkcell","25.999 TL"]]}
+ ]},
+ {v:"46mm Cellular",colors:[
+  {c:"Uzay Grisi",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-46mm-uzay-grisi-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182771171.html",f:[["Apple Store","43.499 TL"],["gurgencler.com.tr","43.499 TL"]]},
+  {c:"Roze Altın",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-46mm-roze-altin-rengi-aluminyum-kasa-ve-bulut-pembesi-spor-kordon-fiyati,1182772766.html",f:[["Turkcell","37.299 TL"],["MediaMarkt","39.499 TL"],["troy e-store","39.499 TL"],["Apple Store","43.499 TL"],["gurgencler.com.tr","43.499 TL"]]},
+  {c:"Gümüş",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-46mm-gumus-rengi-aluminyum-kasa-ve-sis-moru-spor-kordon-fiyati,1182772761.html",f:[["Turkcell","37.889 TL"],["MediaMarkt","39.499 TL"],["gurgencler.com.tr","43.499 TL"]]},
+  {c:"Simsiyah",u:"/akilli-saat/en-ucuz-apple-watch-series-11-gps-cellular-46mm-simsiyah-aluminyum-kasa-ve-siyah-spor-kordon-fiyati,1182772769.html",f:[["Turkcell","37.899 TL"],["Apple Store","43.499 TL"],["gurgencler.com.tr","43.499 TL"]]}
+ ]}
 ]},
 {cat:"Apple Watch",model:"Apple Watch SE 3",img:"/z/apple/apple-watch-se-3.jpg",variants:[
- {v:"40mm GPS",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-se-3-fiyati,746961196.html",f:[["gurgencler.com.tr","12.799 TL"],["MediaMarkt","12.799 TL"],["Teknosa","12.799 TL"],["Vatan Bilgisayar","12.799 TL"],["Turkcell","12.819 TL"],["Beymen","13.916 TL"],["troy e-store","13.999 TL"],["Apple Store","15.499 TL"]]}]},
- {v:"40mm Cellular",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-40mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182795325.html",f:[["MediaMarkt","24.999 TL"],["troy e-store","24.999 TL"],["Apple Store","27.499 TL"],["gurgencler.com.tr","27.499 TL"]]}]},
- {v:"44mm GPS",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-44mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182802385.html",f:[["Turkcell","14.139 TL"],["Arçelik","14.789 TL"],["Beko","14.789 TL"],["gurgencler.com.tr","14.799 TL"],["MediaMarkt","14.799 TL"],["Teknosa","14.799 TL"],["Vatan Bilgisayar","14.799 TL"],["Beymen","15.462 TL"],["troy e-store","15.499 TL"],["Apple Store","16.999 TL"]]}]},
- {v:"44mm Cellular",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-44mm-aluminyum-kasa-ve-spor-kordon-fiyati,1182802400.html",f:[["Turkcell","25.989 TL"],["MediaMarkt","26.499 TL"],["Vatan Bilgisayar","26.499 TL"],["Apple Store","28.999 TL"],["gurgencler.com.tr","28.999 TL"]]}]}
+ {v:"40mm GPS",colors:[
+  {c:"Yıldız Işığı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-40mm-yildiz-isigi-aluminyum-kasa-ve-yildiz-isigi-spor-kordon-fiyati,1182795313.html",f:[["gurgencler.com.tr","12.799 TL"],["MediaMarkt","12.799 TL"],["Teknosa","12.799 TL"],["Vatan Bilgisayar","12.799 TL"],["Beymen","13.916 TL"],["troy e-store","13.999 TL"],["Turkcell","14.599 TL"],["Apple Store","15.499 TL"]]},
+  {c:"Gece Yarısı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-40mm-gece-yarisi-aluminyum-kasa-ve-gece-yarisi-spor-kordon-fiyati,1182795292.html",f:[["gurgencler.com.tr","12.799 TL"],["MediaMarkt","12.799 TL"],["Teknosa","12.799 TL"],["Vatan Bilgisayar","12.799 TL"],["Turkcell","12.819 TL"],["Beymen","13.916 TL"],["troy e-store","13.999 TL"],["Apple Store","15.499 TL"]]}
+ ]},
+ {v:"40mm Cellular",colors:[
+  {c:"Yıldız Işığı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-40mm-yildiz-isigi-aluminyum-kasa-ve-yildiz-isigi-spor-kordon-fiyati,1182795330.html",f:[["MediaMarkt","24.999 TL"],["troy e-store","24.999 TL"],["Apple Store","27.499 TL"],["gurgencler.com.tr","27.499 TL"]]},
+  {c:"Gece Yarısı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-40mm-gece-yarisi-aluminyum-kasa-ve-gece-yarisi-spor-kordon-fiyati,1182799761.html",f:[["MediaMarkt","24.999 TL"],["troy e-store","24.999 TL"],["Apple Store","27.499 TL"],["gurgencler.com.tr","27.499 TL"]]}
+ ]},
+ {v:"44mm GPS",colors:[
+  {c:"Gece Yarısı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-44mm-gece-yarisi-aluminyum-kasa-ve-gece-yarisi-spor-kordon-fiyati,1182802387.html",f:[["Turkcell","14.139 TL"],["gurgencler.com.tr","14.799 TL"],["MediaMarkt","14.799 TL"],["Teknosa","14.799 TL"],["Vatan Bilgisayar","14.799 TL"],["Beymen","15.462 TL"],["troy e-store","15.499 TL"],["Apple Store","16.999 TL"]]},
+  {c:"Yıldız Işığı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-44mm-yildiz-isigi-aluminyum-kasa-ve-yildiz-isigi-spor-kordon-fiyati,1182802394.html",f:[["Turkcell","14.629 TL"],["gurgencler.com.tr","14.799 TL"],["MediaMarkt","14.799 TL"],["Teknosa","14.799 TL"],["Vatan Bilgisayar","14.799 TL"],["Beymen","15.462 TL"],["troy e-store","15.499 TL"],["Apple Store","16.999 TL"]]}
+ ]},
+ {v:"44mm Cellular",colors:[
+  {c:"Yıldız Işığı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-44mm-yildiz-isigi-aluminyum-kasa-ve-yildiz-isigi-spor-kordon-fiyati,1182802401.html",f:[["Turkcell","25.999 TL"],["MediaMarkt","26.499 TL"],["Apple Store","28.999 TL"],["gurgencler.com.tr","28.999 TL"]]},
+  {c:"Gece Yarısı",u:"/akilli-saat/en-ucuz-apple-watch-se-3-gps-cellular-44mm-gece-yarisi-aluminyum-kasa-ve-gece-yarisi-spor-kordon-fiyati,1182802402.html",f:[["Turkcell","25.989 TL"],["MediaMarkt","26.499 TL"],["Vatan Bilgisayar","26.499 TL"],["Apple Store","28.999 TL"],["gurgencler.com.tr","28.999 TL"]]}
+ ]}
 ]},
 {cat:"Apple Watch",model:"Apple Watch Ultra 3",img:"/z/apple/apple-watch-ultra-3-gps-cellular-49mm-siyah-titanyum-kasa.jpg",variants:[
- {v:"49mm Siyah Titanyum",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-ultra-3-gps-cellular-49mm-siyah-titanyum-kasa-fiyati,1182767734.html",f:[["Turkcell","59.899 TL"],["MediaMarkt","59.999 TL"],["troy e-store","59.999 TL"],["Teknosa","64.999 TL"],["Apple Store","65.999 TL"],["gurgencler.com.tr","65.999 TL"]]}]},
- {v:"49mm Natürel Titanyum",colors:[{c:"",u:"/akilli-saat/en-ucuz-apple-watch-ultra-3-gps-cellular-49mm-naturel-titanyum-kasa-fiyati,1182767732.html",f:[["Turkcell","59.899 TL"],["MediaMarkt","59.999 TL"],["troy e-store","59.999 TL"],["Vatan Bilgisayar","59.999 TL"],["Teknosa","63.999 TL"],["Apple Store","65.999 TL"],["gurgencler.com.tr","65.999 TL"]]}]}
+ {v:"49mm GPS+Cellular",colors:[
+  {c:"Siyah Titanyum",u:"/akilli-saat/en-ucuz-apple-watch-ultra-3-gps-cellular-49mm-siyah-titanyum-kasa-fiyati,1182767734.html",f:[["Turkcell","59.899 TL"],["MediaMarkt","59.999 TL"],["troy e-store","59.999 TL"],["Teknosa","64.999 TL"],["Apple Store","65.999 TL"],["gurgencler.com.tr","65.999 TL"]]},
+  {c:"Natürel Titanyum",u:"/akilli-saat/en-ucuz-apple-watch-ultra-3-gps-cellular-49mm-naturel-titanyum-kasa-fiyati,1182767732.html",f:[["Turkcell","59.899 TL"],["MediaMarkt","59.999 TL"],["troy e-store","59.999 TL"],["Vatan Bilgisayar","59.999 TL"],["Teknosa","63.999 TL"],["Apple Store","65.999 TL"],["gurgencler.com.tr","65.999 TL"]]}
+ ]}
 ]}
 ];
 
@@ -215,7 +316,6 @@ function fbErr(img){const s=document.createElement('span');s.className='fbadge';
 function flogo(firm){const initial=(firm[0]||'?').toUpperCase();const color=colorFor(firm);const d=DOMAINS[firm];
   if(d)return `<img class="flogo" data-i="${initial}" data-c="${color}" src="https://www.google.com/s2/favicons?sz=64&domain=${d}" onerror="fbErr(this)">`;
   return `<span class="fbadge" style="background:${color}">${initial}</span>`;}
-// precompute mins
 MODELS.forEach(m=>{m._min=Infinity;m.variants.forEach(v=>{v.colors.forEach(co=>{co._s=[...co.f].sort((a,b)=>num(a[1])-num(b[1]));co._min=num(co._s[0][1]);});v._min=Math.min(...v.colors.map(c=>c._min));m._min=Math.min(m._min,v._min);});});
 
 let activeCat="Tümü",query="";
@@ -243,8 +343,8 @@ function render(){
     if(m.cat!==lastCat){lastCat=m.cat;const h=document.createElement('div');h.className='cat';h.textContent=m.cat;list.appendChild(h);}
     const card=document.createElement('div');card.className='model';
     const vBtns=m.variants.map((v,i)=>`<button class="var" data-i="${i}"><div class="vl">${v.v}</div><div class="vp">${fmt(v._min)}</div></button>`).join('');
-    card.innerHTML=`<div class="mhead"><img class="mimg" src="${B+m.img}" alt="" onerror="this.style.display='none'"><div class="mtext"><span class="mname">${m.model}</span><span class="mbest">en ucuz ${fmt(m._min)} <small>· ${m.variants.length} seçenek</small></span></div></div>
-      <div class="seg">Hafıza / Seçenek</div><div class="vars">${vBtns}</div><div class="vpanel" id="vp"></div>`;
+    card.innerHTML=`<div class="mhead"><img class="mimg" src="${IMGB+m.img}" alt="" onerror="this.style.display='none'"><div class="mtext"><span class="mname">${m.model}</span><span class="mbest">en ucuz ${fmt(m._min)} <small>· ${m.variants.length} seçenek</small></span></div></div>
+      <div class="seg">Hafıza / Seçenek</div><div class="vars">${vBtns}</div><div class="vpanel"></div>`;
     const vars=[...card.querySelectorAll('.var')];const panel=card.querySelector('.vpanel');
     vars.forEach((btn,vi)=>{btn.onclick=()=>{
       const open=btn.classList.contains('on');
